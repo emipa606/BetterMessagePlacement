@@ -1,5 +1,8 @@
 # Changelog for BetterMessagePlacement
 
+1.4.2 - Added incompatibility tag for [LTO] Colony Groups
+
+
 1.4.1 - Mod updated for 1.4 and passed autotests
 
 

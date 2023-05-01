@@ -22,6 +22,9 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
+  <incompatibleWith>
+    <li>DerekBickley.LTOColonyGroupsFinal</li>
+  </incompatibleWith>
   <description>[img]https://i.imgur.com/buuPQel.png[/img]
 Update of Dyrewulfes mod
 https://github.com/Dyrewulfe/RW-BetterMessagePlacement
@@ -30,7 +33,7 @@ https://github.com/Dyrewulfe/RW-BetterMessagePlacement
 
 [table]
 	[tr]
-		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+		[td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
 		[td][url=https://github.com/emipa606/BetterMessagePlacement][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
     [/tr]
     [tr]
@@ -47,7 +50,6 @@ If you use [url= https://steamcommunity.com/sharedfiles/filedetails/?id=23454939
 
 
 [img]https://i.imgur.com/PwoNOj4.png[/img]
-
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -55,5 +57,7 @@ If you use [url= https://steamcommunity.com/sharedfiles/filedetails/?id=23454939
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
-[/list]</description>
+[/list]
+
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2259516339]Last updated 2023-05-01[/url]</description>
 </ModMetaData>
