@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="Better_Message_Placement/Better_Message_Placement.csproj" />
+</Solution>

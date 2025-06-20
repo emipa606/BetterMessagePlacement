@@ -9,16 +9,17 @@ using Verse;
 namespace Better_Message_Placement;
 
 [HarmonyPatch(typeof(Messages), nameof(Messages.MessagesDoGUI))]
-public class Messages_MessagesDoGUI_Patch
+public class Messages_MessagesDoGUI
 {
-    private static readonly FieldInfo vector2_y = AccessTools.Field(typeof(Vector2), "y");
+    private static readonly FieldInfo vector2Y = AccessTools.Field(typeof(Vector2), "y");
 
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        var prev = instructions.First();
+        var codeInstructions = instructions as CodeInstruction[] ?? instructions.ToArray();
+        var prev = codeInstructions.First();
         var patched = false;
 
-        foreach (var code in instructions)
+        foreach (var code in codeInstructions)
         {
             yield return code;
             if (patched)
@@ -26,11 +27,11 @@ public class Messages_MessagesDoGUI_Patch
                 continue;
             }
 
-            if (prev.opcode == OpCodes.Ldfld && (FieldInfo)prev.operand == vector2_y)
+            if (prev.opcode == OpCodes.Ldfld && (FieldInfo)prev.operand == vector2Y)
             {
                 patched = true;
                 yield return new CodeInstruction(OpCodes.Call,
-                    AccessTools.Method(typeof(Messages_MessagesDoGUI_Patch), nameof(YOffsetAdjustment)));
+                    AccessTools.Method(typeof(Messages_MessagesDoGUI), nameof(yOffsetAdjustment)));
                 yield return new CodeInstruction(OpCodes.Add);
             }
 
@@ -38,7 +39,7 @@ public class Messages_MessagesDoGUI_Patch
         }
     }
 
-    private static int YOffsetAdjustment()
+    private static int yOffsetAdjustment()
     {
         var offset = (int)Messages.MessagesTopLeftStandard.y;
         if (Find.CurrentMap == null)
