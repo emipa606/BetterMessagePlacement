@@ -3,7 +3,13 @@
   "CanAdd": "0",
   "CanRemove": "0",
   "PreviewVersion": "1.6",
-  "LastXmlCleaning": "2025-06-20T22:53:30.3438171+02:00",
+  "LastXmlCleaning": "2025-10-18T22:30:48.8724078+02:00",
   "SocialImageSet": true,
-  "SearchTags": " colonist bar"
+  "SearchTags": " colonist bar",
+  "Patches": false,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 7482,
+  "LinesOfXML": 0,
+  "CodeBaseSize": 55
 }

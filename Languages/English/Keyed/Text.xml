@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BeMe.CurrentModVersion>Installed mod-version: {0}</BeMe.CurrentModVersion>
+  <BeMe.XOffset>Extra horizontal offset: {0}</BeMe.XOffset>
+  <BeMe.XOffsetTT>Percent of screen width to add to the default placement</BeMe.XOffsetTT>
+  <BeMe.YOffset>Extra vertical offset: {0}</BeMe.YOffset>
+  <BeMe.YOffsetTT>Percent of screen height to add to the default placement</BeMe.YOffsetTT>
+  <BeMe.TestMessage>Test-message to show placement</BeMe.TestMessage>
+  <BeMe.ResetToDefault>Reset to default</BeMe.ResetToDefault>
+</LanguageData>

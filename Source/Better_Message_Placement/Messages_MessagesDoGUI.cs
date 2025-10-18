@@ -12,26 +12,36 @@ namespace Better_Message_Placement;
 public class Messages_MessagesDoGUI
 {
     private static readonly FieldInfo vector2Y = AccessTools.Field(typeof(Vector2), "y");
+    private static readonly FieldInfo vector2X = AccessTools.Field(typeof(Vector2), "x");
 
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var codeInstructions = instructions as CodeInstruction[] ?? instructions.ToArray();
         var prev = codeInstructions.First();
-        var patched = false;
+        var patchedY = false;
+        var patchedX = false;
 
         foreach (var code in codeInstructions)
         {
             yield return code;
-            if (patched)
+            if (patchedY && patchedX)
             {
                 continue;
             }
 
             if (prev.opcode == OpCodes.Ldfld && (FieldInfo)prev.operand == vector2Y)
             {
-                patched = true;
+                patchedY = true;
                 yield return new CodeInstruction(OpCodes.Call,
                     AccessTools.Method(typeof(Messages_MessagesDoGUI), nameof(yOffsetAdjustment)));
+                yield return new CodeInstruction(OpCodes.Add);
+            }
+
+            if (prev.opcode == OpCodes.Ldfld && (FieldInfo)prev.operand == vector2X)
+            {
+                patchedX = true;
+                yield return new CodeInstruction(OpCodes.Call,
+                    AccessTools.Method(typeof(Messages_MessagesDoGUI), nameof(xOffsetAdjustment)));
                 yield return new CodeInstruction(OpCodes.Add);
             }
 
@@ -60,6 +70,21 @@ public class Messages_MessagesDoGUI
         }
 
         offset += (int)(Find.ColonistBar.Size.y + (24f * scale)) * rows;
+
+        offset += (int)(Prefs.ScreenHeight * Better_Message_PlacementMod.instance.Settings.yOffsetPercent);
+
+        return offset;
+    }
+
+    private static int xOffsetAdjustment()
+    {
+        var offset = (int)Messages.MessagesTopLeftStandard.x;
+        if (Find.CurrentMap == null)
+        {
+            return offset;
+        }
+
+        offset += (int)(Prefs.ScreenWidth * Better_Message_PlacementMod.instance.Settings.xOffsetPercent);
 
         return offset;
     }
